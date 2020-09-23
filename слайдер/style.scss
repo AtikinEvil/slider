@@ -1,0 +1,84 @@
+@import 'libs';
+@import 'vars';
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+/* container
+=====================================================*/
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.section {
+    padding-top: 250px;
+}
+
+.slider {
+    .slick-slide {
+        padding: 0 15px;
+    } 
+
+    &__item {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        &--sm {
+            height: 320px;
+        }
+
+        &--big {
+            height: 700px;
+        }
+    }
+}
+
+.modal {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: rgba(22, 22, 22, .8);
+    transition: all .2s linear;
+
+    &.open {
+        opacity: 1;
+        z-index: 10;
+    }
+
+    &__window {
+        padding-top: 80px;
+        width: 600px;
+        margin: 0 auto;
+    }
+}
+
+
+
+
