@@ -1,31 +1,27 @@
 <div class="promo">
     <div class="promo__inner">
         {{#each items}}
-        <div class="promo__item">
-            <a class="promo__item-inner" href="{{href}}">
-                <div class="promo__presentation {{#if color}}promo__presentation--color-{{color}}{{/if}}">
-                    {{#is photo '!==' ''}}
-                        <div class="promo__presentation-photo" style="background-image: url(https://www.mirf.ru/wp-content/uploads/2018/05/Boku-no-Hero-Academia-1.jpg);"></div>
-                    {{/is}}
-                    {{#is photo '===' ''}}
-                        <div class="promo__presentation-icon">
-                            {{Icon className="promo__presentation-icon-svg" iconName="percent"}}
-                        </div>
-                    {{/is}}
-                </div>
-                <div class="promo__content">
-                    <div class="promo__content-title">{{{title}}}</div>
-                    <div class="promo__content-cta">
-                        <span>{{cta}}</span>
+        <a class="promo__item" href="{{href}}">
+            <div class="promo__presentation {{#if color}}promo__presentation--color-{{color}}{{/if}}">
+                {{#is photo '!==' ''}}
+                    <div class="promo__presentation-photo" style="background-image: url(https://www.mirf.ru/wp-content/uploads/2018/05/Boku-no-Hero-Academia-1.jpg);"></div>
+                {{/is}}
+                {{#is photo '===' ''}}
+                    <div class="promo__presentation-icon">
+                        {{Icon className="promo__presentation-icon-svg" iconName="percent"}}
                     </div>
+                {{/is}}
+            </div>
+            <div class="promo__content">
+                <div class="promo__content-title">{{{title}}}</div>
+                <div class="promo__content-cta">
+                    <span>{{cta}}</span>
                 </div>
-            </a>
-        </div>
+            </div>
+        </a>
         {{/each}}
     </div>
 </div>
-
-
 
 
 
@@ -41,6 +37,7 @@
     }
     
     &__item {
+        display: inline-block;
         position: relative;
         width: 25%;
         height: 330px;
@@ -56,12 +53,6 @@
 
         @include respond-to(md){
             width: 100%;
-        }
-
-        &-inner {
-            display: block;
-            text-decoration: none;
-            height: 100%;
         }
     }
 
@@ -163,8 +154,7 @@
                 border-bottom: 1px solid #fff;
             }
         }
-    }
-    
+    } 
 }
 
 
