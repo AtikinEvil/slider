@@ -1,0 +1,219 @@
+<div class="promo">
+    <div class="promo__inner">
+        {{#each items}}
+        <div class="promo__item">
+            <a class="promo__item-inner" href="{{href}}">
+                <div class="promo__presentation {{#if color}}promo__presentation--color-{{color}}{{/if}}">
+                    {{#is photo '!==' ''}}
+                        <div class="promo__presentation-photo" style="background-image: url(https://www.mirf.ru/wp-content/uploads/2018/05/Boku-no-Hero-Academia-1.jpg);"></div>
+                    {{/is}}
+                    {{#is photo '===' ''}}
+                        <div class="promo__presentation-icon">
+                            {{Icon className="promo__presentation-icon-svg" iconName="percent"}}
+                        </div>
+                    {{/is}}
+                </div>
+                <div class="promo__content">
+                    <div class="promo__content-title">{{{title}}}</div>
+                    <div class="promo__content-cta">
+                        <span>{{cta}}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+.promo {
+    $promo: &;
+
+    &__inner {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    &__item {
+        position: relative;
+        width: 25%;
+        height: 330px;
+
+        @include respond-to(xl){
+            height: 282px;
+        }
+
+        @include respond-to(lg){
+            height: 174px;
+            width: 50%;
+        }
+
+        @include respond-to(md){
+            width: 100%;
+        }
+
+        &-inner {
+            display: block;
+            text-decoration: none;
+            height: 100%;
+        }
+    }
+
+    &__presentation {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        transition: transform ease-in-out 150ms;
+        overflow: hidden;
+
+        #{$promo}__item:hover & {
+            transform: scale(1.06);
+            z-index: 1;
+        }
+
+        &-photo {
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        &-icon {
+            &-svg {
+                position: absolute;
+                top: 50%;
+                right: -56px;
+                transform: translateY(-50%);
+                width: auto;
+                height: 383px;
+
+                @include respond-to(lg){
+                    height: 327px;
+                    right: -46px;
+                }
+
+                @include respond-to(lg){
+                    height: 201px;
+                    right: -30px;
+                }
+            }
+        }
+
+        &--color {
+            &-green {
+                background-color: $color-green-medium;
+
+                #{$promo}__presentation-icon-svg {
+                    fill: #A8C22E;
+                }
+            }
+
+            &-blue {
+                background-color: $color-blue;
+
+                #{$promo}__presentation-icon-svg {
+                    fill: #51B3B0;
+                }
+            }
+        }
+    }
+
+    &__content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 40px 32px;
+
+        @include respond-to(xl){
+            padding: 32px 24px;
+        }
+
+        @include respond-to(lg){
+            padding: 20px 16px;
+            width: 60%;
+        }
+
+
+        &-title {
+            flex: 1 1 auto;
+
+            @include font-size-get('h2');
+            font-weight: 600;
+            color: #fff;  
+        }
+
+        &-cta {
+            @include font-size-get('h3');
+            font-weight: 600;   
+            color: #fff;
+
+            span {
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let data = {
+    'promo': {
+        'defaults': {
+            'items': [
+                {
+                    'title': 'Платим <span class="line-breaker--xl"></span> всю ипотеку <span class="line-breaker--xl"></span> за вас',
+                    'cta': 'Участвовать в акции',
+                    'href': '#',
+                    'photo': '',
+                    'color': 'green'
+                },
+                {
+                    'title': 'Платим всю ипотеку за вас',
+                    'cta': 'Участвовать в акции',
+                    'href': '#',
+                    'photo': '',
+                    'color': 'blue'
+                },
+                {
+                    'title': 'Платим <span class="line-breaker--xl"></span> всю ипотеку <span class="line-breaker--xl"></span> за вас',
+                    'cta': 'Участвовать в акции',
+                    'href': '#',
+                    'photo': '',
+                    'color': 'green'
+                },
+                {
+                    'title': 'Платим всю ипотеку за вас',
+                    'cta': 'Участвовать в акции',
+                    'href': '#',
+                    'photo': '1',
+                    'color': 'blue'
+                },
+            ]
+        }
+    }
+}
